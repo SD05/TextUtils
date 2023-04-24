@@ -5,10 +5,12 @@ function TextForm(props) {
 
   const handleUpClick = () => {
     setText(text.toUpperCase());
+    props.showAlert("Converted to Uppercase", "success");
   };
 
   const handleLoClick = () => {
     setText(text.toLowerCase());
+    props.showAlert("Converted to Lowercase", "success");
   };
 
   const handleCopy = () => {
@@ -16,15 +18,18 @@ function TextForm(props) {
     text.select();
     text.setSelectionRange(0, 9999);
     navigator.clipboard.writeText(text.value);
+    props.showAlert("Copied to clipboard", "success");
   };
 
   const handleClearClick = () => {
     setText("");
+    props.showAlert("Cleared text", "success");
   };
 
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Extra spaces has been removed", "success");
   };
 
   const onChange = (event) => {
