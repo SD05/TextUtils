@@ -14,11 +14,7 @@ function TextForm(props) {
   };
 
   const handleCopy = () => {
-    let text = document.getElementById("myBox");
-    text.select();
-    // text.setSelectionRange(0, 9999);
     navigator.clipboard.writeText(text.value);
-    document.getSelection().removeAllRanges();
     props.showAlert("Copied to clipboard", "success");
   };
 
@@ -103,7 +99,7 @@ function TextForm(props) {
       >
         <h1>Your text Summary</h1>
         <p>
-          {text.split(" ").filter((element) => element.length !== 0).length}{" "}
+          {text.split(/\s+/).filter((element) => element.length !== 0).length}{" "}
           words and {text.length} characters
         </p>
         <p>
